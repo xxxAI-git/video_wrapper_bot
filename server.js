@@ -9,6 +9,7 @@ app.set('views', path.join(__dirname, 'templates'));
 const PORT = process.env.PORT || 3000;
 const tokens = {};
 const TOKEN_EXPIRY = 10 * 60 * 1000; // 10 minutes
+// const TOKEN_EXPIRY = 12 * 60 * 60 * 1000; // 12 hours
 
 // Generate temporary URL
 app.get('/generate', (req, res) => {

@@ -30,8 +30,7 @@ app.get('/watch/:token', (req, res) => {
 
   res.render('video', {
     iframe_src: video,
-    title: "Your Video",
-    ack_url: "/acknowledgements.html"
+    title: ""
   });
 });
 

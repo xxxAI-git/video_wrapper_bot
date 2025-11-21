@@ -39,19 +39,21 @@
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
         }
 
-        a {
+        /* Buy Me a Coffee button style */
+        .bmc-button {
             margin-top: 20px;
             text-decoration: none;
             color: #fff;
-            background-color: #007BFF;
+            background-color: #ff813f;
             padding: 10px 20px;
             border-radius: 5px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
             transition: background-color 0.3s ease;
+            font-weight: bold;
         }
 
-        a:hover {
-            background-color: #0056b3;
+        .bmc-button:hover {
+            background-color: #e56b2a;
         }
     </style>
 
@@ -78,8 +80,9 @@
         allowfullscreen
         sandbox="allow-scripts allow-same-origin allow-presentation">
     </iframe>
-    <% if (ack_url) { %>
-        <a href="<%= ack_url %>">Acknowledgements</a>
-    <% } %>
+    <!-- Buy Me a Coffee -->
+    <a class="bmc-button" href="https://www.buymeacoffee.com/YOURUSERNAME" target="_blank">
+        ☕ Buy Me a Coffee
+    </a>
 </body>
 </html>

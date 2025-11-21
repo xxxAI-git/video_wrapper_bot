@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        iframe {
+            width: 80%;
+            max-width: 1257px;
+            aspect-ratio: 16 / 9;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        a {
+            margin-top: 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <script>
+        // Block clicks on external links
+        document.addEventListener('click', function(e) {
+            let target = e.target;
+            while (target && target !== document) {
+                if (target.tagName === 'A' && !target.href.startsWith(window.location.origin)) {
+                    e.preventDefault();
+                    alert('Accesso a link esterno bloccato');
+                    return false;
+                }
+                target = target.parentNode;
+            }
+        });
+    </script>
+</head>
+
+<body oncontextmenu="return false;">
+    <h1><%= title %></h1>
+    <iframe
+        src="<%= iframe_src %>"
+        allowfullscreen
+        sandbox="allow-scripts allow-same-origin allow-presentation">
+    </iframe>
+    <% if (ack_url) { %>
+        <a href="<%= ack_url %>">Acknowledgements</a>
+    <% } %>
+</body>
+</html>

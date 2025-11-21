@@ -28,10 +28,12 @@
             font-size: 2rem;
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 0 10px;
         }
 
         iframe {
-            width: 80%;
+            width: 100%;
             max-width: 1257px;
             aspect-ratio: 16 / 9;
             border: 2px solid #fff;
@@ -39,7 +41,7 @@
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Buy Me a Coffee button style */
+        /* Buy Me a Coffee button */
         .bmc-button {
             margin-top: 20px;
             text-decoration: none;
@@ -58,11 +60,13 @@
     </style>
 
     <script>
-        // Block clicks on external links
+        // Block clicks on external links except Buy Me a Coffee
         document.addEventListener('click', function(e) {
             let target = e.target;
             while (target && target !== document) {
-                if (target.tagName === 'A' && !target.href.startsWith(window.location.origin)) {
+                if (target.tagName === 'A' 
+                    && !target.href.startsWith(window.location.origin) 
+                    && !target.href.includes('buymeacoffee.com')) {
                     e.preventDefault();
                     alert('Accesso a link esterno bloccato');
                     return false;
@@ -75,11 +79,13 @@
 
 <body oncontextmenu="return false;">
     <h1><%= title %></h1>
+    
     <iframe
         src="<%= iframe_src %>"
         allowfullscreen
         sandbox="allow-scripts allow-same-origin allow-presentation">
     </iframe>
+
     <!-- Buy Me a Coffee -->
     <a class="bmc-button" href="https://www.buymeacoffee.com/YOURUSERNAME" target="_blank">
         ☕ Buy Me a Coffee

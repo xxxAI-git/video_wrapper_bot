@@ -33,6 +33,7 @@ app.get('/generate', (req, res) => {
     video: videoUrl
   };
 
+  // Return a clean, tokenized URL without embedding the video in the query string
   const link = `${req.protocol}://${req.get('host')}/watch/${token}`;
   res.json({ url: link });
 });
@@ -40,8 +41,8 @@ app.get('/generate', (req, res) => {
 // Watch video
 app.get('/watch/:token', (req, res) => {
   const { token } = req.params;
-
   const data = tokens[token];
+
   if (!data || data.expires < Date.now()) {
     return res.status(403).send('Token expired or invalid');
   }

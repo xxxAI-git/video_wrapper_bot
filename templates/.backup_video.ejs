@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        #videoContainer {
+            width: 100%;
+            max-width: 1257px;
+            aspect-ratio: 16 / 9;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Buttons */
+        .button {
+            margin-top: 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff813f;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #e56b2a;
+        }
+
+        .buttons-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+
+    <script>
+        // Block clicks on external links except Buy Me a Coffee
+        document.addEventListener('click', function(e) {
+            let target = e.target;
+            while (target && target !== document) {
+                if (target.tagName === 'A' 
+                    && !target.href.startsWith(window.location.origin) 
+                    && !target.href.includes('buymeacoffee.com')) {
+                    e.preventDefault();
+                    alert('Accesso a link esterno bloccato');
+                    return false;
+                }
+                target = target.parentNode;
+            }
+        });
+    </script>
+</head>
+
+<body oncontextmenu="return false;">
+    <h1><%= title %></h1>
+
+    <div id="videoContainer">
+        <iframe
+            src="<%= iframe_src %>"
+            allow="fullscreen; autoplay; encrypted-media; picture-in-picture; on-device-fullscreen"
+            allowfullscreen
+            webkitallowfullscreen
+            mozallowfullscreen
+            sandbox="allow-scripts allow-same-origin allow-presentation">
+        </iframe>
+    </div>
+
+    <div class="buttons-wrapper">
+        <!-- Buy Me a Coffee only -->
+        <a class="button" href="https://www.buymeacoffee.com/primeflix_io" target="_blank">
+            ☕ Buy Me a Coffee
+        </a>
+    </div>
+</body>
+</html>

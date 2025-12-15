@@ -8,7 +8,8 @@ app.set('views', path.join(__dirname, 'templates'));
 
 const PORT = process.env.PORT || 3000;
 const tokens = {};
-const TOKEN_EXPIRY = 10 * 60 * 1000; // 10 minutes
+// const TOKEN_EXPIRY = 10 * 60 * 1000; // 10 minutes
+const TOKEN_EXPIRY = 6 * 60 * 60 * 1000; // 6 hours
 
 // Middleware to parse JSON bodies (optional, for future POST support)
 app.use(express.json());
